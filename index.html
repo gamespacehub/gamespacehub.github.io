@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GameSpec Hub — PC Game Requirements & Can I Run It?</title>
+  <meta name="description" content="Explore a neon-styled PC game library, browse game artwork, compare RAM and storage notes, and run a quick PC compatibility check.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#0b0b10">
+  <!-- Replace this URL after publishing with your real GitHub Pages URL. -->
+  <link rel="canonical" href="https://YOUR-USERNAME.github.io/gamespace/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GameSpec Hub — PC Game Requirements & Compatibility">
+  <meta property="og:description" content="Search PC games, view requirement notes, and check basic RAM and storage compatibility.">
+  <meta property="og:url" content="https://YOUR-USERNAME.github.io/gamespace/">
+  <meta property="og:site_name" content="GameSpec Hub">
+  <meta name="twitter:card" content="summary">
+  <style>
+    :root{color-scheme:dark;--bg:#0b0b10;--panel:#101018;--panel2:#151522;--line:#292940;--text:#e9e9f0;--muted:#a0a0bd;--accent:#8888ff;--green:#7effb0;--red:#ff9292}
+    *{box-sizing:border-box}body{margin:0;padding:24px 16px 48px;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+    a{color:#b7b7ff}.app{max-width:1440px;margin:auto}.brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}.brand h1{font-size:clamp(1.6rem,4vw,2.2rem);margin:0;letter-spacing:-.03em;background:linear-gradient(135deg,#b2b5ff,#e0b0ff);-webkit-background-clip:text;background-clip:text;color:transparent}.brand-badge{background:#23233a;padding:4px 12px;border-radius:40px;color:#b9bdff;font-size:.8rem;border:1px solid #3a3a60}
+    .intro{color:var(--muted);max-width:850px;margin:0 0 24px}.toolbar{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px;align-items:center}.search-wrap{flex:2;min-width:min(100%,260px)}input,select{width:100%;padding:13px 15px;border-radius:14px;border:1px solid var(--line);background:#13131c;color:white;font:inherit}input:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.filters{display:flex;flex-wrap:wrap;gap:8px}.chip,.btn{border:1px solid #343450;background:#171725;color:#d5d5ee;padding:9px 14px;border-radius:30px;cursor:pointer;font:inherit;font-size:.88rem}.chip.active,.btn-primary{background:#38388c;border-color:#6868c8;color:#fff}.chip:hover,.btn:hover{filter:brightness(1.2)}.toolbar-side{min-width:160px}
+    .section{background:#0f0f18;border:1px solid #202035;border-radius:20px;padding:20px;margin-bottom:24px}.section h2{font-size:1.25rem;margin:0 0 14px}.top10-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:10px}.top10-item{display:flex;align-items:center;gap:12px;padding:9px;background:#14141f;border:1px solid #24243a;border-radius:12px;cursor:pointer;min-width:0}.rank{color:var(--accent);font-weight:800}.top-thumb{width:76px;height:44px;object-fit:cover;background:#222;border-radius:6px}.top-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:18px;margin:20px 0 32px}.card{background:var(--panel);border:1px solid #242438;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .18s,border-color .18s}.card:hover{transform:translateY(-3px);border-color:#55558a}.card-art{aspect-ratio:16/9;background:#171725;position:relative;overflow:hidden}.card-art img{width:100%;height:100%;display:block;object-fit:cover}.tier{position:absolute;top:10px;left:10px;background:#090910d9;border:1px solid #ffffff25;padding:4px 9px;border-radius:20px;font-size:.72rem}.card-body{padding:15px;display:flex;flex-direction:column;gap:9px;flex:1}.game-title{font-size:1.06rem;font-weight:700;line-height:1.3}.game-genre,.muted{color:var(--muted);font-size:.85rem}.specs{display:flex;gap:22px;border-top:1px solid #26263a;padding-top:10px;margin-top:3px}.spec-label{display:block;color:#8383a7;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em}.spec-value{font-weight:700}.card-actions{display:flex;gap:8px;margin-top:auto;padding-top:5px}.card-actions .btn{flex:1;padding:9px 7px}.favorite{min-width:42px}.empty{padding:45px 15px;text-align:center;color:var(--muted)}
+    .modal-overlay{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;padding:16px;z-index:10}.modal-overlay.open{display:flex}.modal{position:relative;background:#11111c;border:1px solid #33334c;border-radius:20px;padding:22px;max-width:760px;width:100%;max-height:90vh;overflow:auto}.modal-close{float:right;border:1px solid #41415f;border-radius:50%;width:38px;height:38px;background:#222238;color:white;cursor:pointer;font-size:1.1rem}.modal-image{width:100%;max-height:320px;object-fit:cover;border-radius:12px;margin:8px 0 14px;background:#171725}.req-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.req-item{background:#191927;border:1px solid #292940;border-radius:10px;padding:10px}.req-item b{display:block;color:#a9a9cc;font-size:.75rem;text-transform:uppercase}.notice{padding:12px;border:1px solid #55502b;background:#211e12;border-radius:10px;color:#e8dda9;font-size:.9rem;margin:12px 0}.checker-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.checker-result{margin-top:14px;padding:14px;border-radius:12px;background:#171725;border:1px solid #343450}.faq{margin-top:28px}.faq details{border-top:1px solid var(--line);padding:12px 0}.faq summary{cursor:pointer;font-weight:650}.footer{border-top:1px solid #25253a;padding-top:18px;color:var(--muted);font-size:.85rem}.hidden{display:none!important}
+
+    .site-nav{position:sticky;top:8px;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px;margin:0 0 22px;background:#101018ed;border:1px solid #292940;border-radius:16px;backdrop-filter:blur(14px)}.nav-brand{font-weight:850;letter-spacing:-.03em;color:#e9e9f0;text-decoration:none;white-space:nowrap}.nav-links{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}.nav-links a{color:#c7c7df;text-decoration:none;font-size:.88rem;padding:8px 10px;border-radius:10px}.nav-links a:hover{background:#24243a;color:white}.nav-links .nav-donate{background:linear-gradient(135deg,#7777ff,#a85cff);color:white;font-weight:750}.hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(26px,6vw,68px);margin-bottom:24px;border:1px solid #35355a;border-radius:26px;background:radial-gradient(ellipse at 82% 10%,#5b3eaa55,transparent 40%),radial-gradient(ellipse at 10% 90%,#2548a744,transparent 45%),linear-gradient(135deg,#17172a,#0d0d16 72%)}.hero:after{content:'🎮';position:absolute;z-index:-1;right:6%;top:12%;font-size:clamp(5rem,16vw,12rem);opacity:.13;transform:rotate(-12deg)}.hero-kicker{display:inline-flex;align-items:center;gap:8px;color:#c5c5ff;border:1px solid #474777;background:#24243caa;border-radius:999px;padding:6px 12px;font-size:.82rem;font-weight:700}.hero h2{font-size:clamp(2rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.055em;max-width:800px;margin:20px 0 16px}.hero h2 span{background:linear-gradient(100deg,#aaaaff,#e0a8ff 55%,#8ce9ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-copy{max-width:650px;color:#b7b7d0;font-size:clamp(1rem,2vw,1.12rem);margin:0 0 24px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.hero-actions .btn{padding:12px 18px;font-weight:750}.hero-stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:30px;padding-top:22px;border-top:1px solid #ffffff1b}.hero-stat strong{display:block;font-size:1.25rem;color:#fff}.hero-stat span{font-size:.8rem;color:#a5a5c0}.donate-panel{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;background:linear-gradient(130deg,#171729,#11111a);border:1px solid #38385a;border-radius:20px;padding:clamp(18px,4vw,30px);margin:24px 0}.donate-panel h2{margin:0 0 8px;font-size:1.4rem}.donate-panel p{margin:0;color:var(--muted);max-width:720px}.upi-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px}.upi-id{display:inline-block;padding:9px 12px;background:#0b0b12;border:1px dashed #55557d;border-radius:10px;font-weight:750;letter-spacing:.02em;color:#d8d8ff}.donate-actions{display:flex;flex-direction:column;gap:9px;min-width:170px}.donate-actions .btn{text-align:center;text-decoration:none;font-weight:750;padding:12px}.donate-note{font-size:.8rem!important;margin-top:12px!important}
+    @media(max-width:650px){body{padding:12px 10px 30px}.site-nav{position:static;align-items:flex-start;flex-direction:column}.nav-links{justify-content:flex-start;width:100%;gap:3px}.nav-links a{padding:7px 8px;font-size:.82rem}.hero{padding:25px 20px}.hero:after{right:0;top:8%;font-size:6rem}.hero h2{max-width:90%}.hero-stats{gap:16px}.donate-panel{grid-template-columns:1fr}.donate-actions{flex-direction:row;flex-wrap:wrap}.donate-actions .btn{flex:1}.section{padding:14px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card-body{padding:11px}.card-actions{flex-direction:column}.card-actions .btn{width:100%}.req-grid,.checker-grid{grid-template-columns:1fr}.top10-grid{grid-template-columns:1fr}.game-title{font-size:.98rem}}
+{body{padding:18px 12px 36px}.section{padding:14px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card-body{padding:11px}.card-actions{flex-direction:column}.card-actions .btn{width:100%}.req-grid,.checker-grid{grid-template-columns:1fr}.top10-grid{grid-template-columns:1fr}.game-title{font-size:.98rem}}
+    @media(max-width:380px){.game-grid{grid-template-columns:1fr}.card-actions{flex-direction:row}}
+
+    /* GameSpec Hub: refreshed neon gaming theme */
+    :root{--bg:#070910;--panel:#101522;--panel2:#151d2d;--line:#28344b;--text:#f2f6ff;--muted:#9aa9c2;--accent:#a6ff4d;--green:#a6ff4d;--red:#ff7c9c}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{background:radial-gradient(ellipse at 50% -15%,#20335c 0%,transparent 42%),var(--bg);background-attachment:fixed}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.16;background-image:linear-gradient(#8ea7ff0b 1px,transparent 1px),linear-gradient(90deg,#8ea7ff0b 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+    .brand h1{background:linear-gradient(100deg,#f3f7ff 10%,#a6ff4d 80%);-webkit-background-clip:text;background-clip:text}
+    .brand-badge{background:#a6ff4d12;border-color:#a6ff4d55;color:#c8ff9a}
+    .site-nav{background:#0b101be8;border-color:#293650;box-shadow:0 12px 40px #0005}
+    .nav-brand{display:flex;align-items:center;gap:9px}.nav-brand:before{content:"";width:10px;height:10px;border-radius:3px;background:var(--accent);box-shadow:0 0 18px #a6ff4d99;display:inline-block}
+    .nav-links a{transition:background .25s,color .25s,transform .25s}.nav-links a:hover{background:#a6ff4d18;color:var(--accent);transform:translateY(-1px)}
+    .nav-links .nav-donate{background:linear-gradient(135deg,#a6ff4d,#66d6a0);color:#0b1110}
+    .hero{border-color:#34445c;background:radial-gradient(ellipse at 83% 18%,#a6ff4d18,transparent 30%),radial-gradient(ellipse at 70% 85%,#416dff24,transparent 40%),linear-gradient(125deg,#151f32,#0b101b 68%);box-shadow:0 24px 90px #0005}
+    .hero:after{content:'◈';color:var(--accent);opacity:.12;text-shadow:0 0 70px var(--accent)}
+    .hero-kicker{color:#d8ffb7;border-color:#a6ff4d55;background:#a6ff4d12}
+    .hero h2 span{background:linear-gradient(100deg,#a6ff4d,#a9f9da 55%,#9db7ff);-webkit-background-clip:text;background-clip:text}
+    .hero-stat strong{color:var(--accent)}
+    .btn,.chip{transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+    .btn:hover,.chip:hover{transform:translateY(-2px);box-shadow:0 7px 22px #0003}
+    .btn-primary,.chip.active{background:var(--accent);border-color:var(--accent);color:#10150b;font-weight:800}
+    input,select{background:#0c1220;border-color:#2b3952;transition:border-color .2s,box-shadow .2s}
+    input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px #a6ff4d18}
+    .section{background:linear-gradient(145deg,#101725ed,#0b1019ed);border-color:#26334a;box-shadow:0 18px 50px #0002}
+    .section h2{letter-spacing:-.025em}
+    .game-grid{gap:20px}
+    .card{position:relative;background:linear-gradient(160deg,#151e2e,#0d121d 70%);border-color:#29354b;box-shadow:0 12px 32px #0002;transition:transform .38s cubic-bezier(.2,.75,.25,1),border-color .3s,box-shadow .3s}
+    .card:after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(135deg,#a6ff4d0b,transparent 45%);opacity:0;transition:opacity .3s}
+    .card:hover{transform:translateY(-7px);border-color:#a6ff4d88;box-shadow:0 20px 50px #0006,0 0 0 1px #a6ff4d12}
+    .card:hover:after{opacity:1}
+    .card-art{aspect-ratio:16/9;background:#101827}
+    .card-art:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,#080c15a8);pointer-events:none}
+    .card-art img{transition:transform .65s cubic-bezier(.2,.75,.25,1),filter .4s;filter:saturate(1.08) contrast(1.03)}
+    .card:hover .card-art img{transform:scale(1.075);filter:saturate(1.22) contrast(1.05)}
+    .tier{z-index:1;backdrop-filter:blur(12px);background:#080d17d9;border-color:#ffffff30}
+    .card-body{position:relative;z-index:1}
+    .game-title{letter-spacing:-.015em}
+    .specs{border-color:#273349}
+    .spec-label{color:#9aaaC3}
+    .favorite{font-size:1.1rem;color:var(--accent)}
+    .top10-item{background:#111a29;border-color:#2a3850;transition:transform .25s,border-color .25s,background .25s}
+    .top10-item:hover{transform:translateX(4px);border-color:#a6ff4d66;background:#182436}
+    .rank{color:var(--accent)}
+    .donate-panel{background:radial-gradient(ellipse at 10% 0%,#a6ff4d12,transparent 55%),linear-gradient(130deg,#151f30,#0d121c);border-color:#35435a}
+    .donate-panel h2{letter-spacing:-.03em}
+    .upi-id{border-color:#a6ff4d66;color:#d7ffb5}
+    .modal{background:#0e1522;border-color:#35435a;box-shadow:0 30px 100px #0009}
+    .req-item{background:#151e2d;border-color:#2a3850}
+    .checker-result{background:#121b2a;border-color:#34435a}
+    .faq details{border-color:#26334a}
+    .faq summary{transition:color .2s}.faq summary:hover{color:var(--accent)}
+    .footer{border-color:#26334a}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+    .card.reveal{transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s}
+    .card.reveal.is-visible:hover{transform:translateY(-7px)}
+    .scroll-progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:20;pointer-events:none;background:#ffffff08}
+    .scroll-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#a6ff4d,#70e7d3,#9caaff);box-shadow:0 0 14px #a6ff4d80}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+    @media(max-width:650px){.game-grid{gap:10px}.card:hover{transform:translateY(-3px)}.site-nav{top:0}.hero{box-shadow:none}}
+
+
+    /* Ratings, editions, trailers, account and community comments */
+    .nav-login{border:1px solid #a6ff4d66!important;color:#d8ffb7!important;background:#a6ff4d12}
+    .rating-line{display:flex;align-items:center;gap:7px;color:#ffd76a;font-size:.88rem;flex-wrap:wrap}
+    .rating-stars{letter-spacing:2px;color:#ffd76a;font-size:1.1rem}
+    .feature-row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+    .feature-pill{border:1px solid #33435b;background:#121d2c;color:#d8e3f7;border-radius:9px;padding:7px 10px;font-size:.82rem}
+    .detail-section{border-top:1px solid #29364b;margin-top:16px;padding-top:14px}
+    .detail-section h3{font-size:1rem;margin:0 0 9px}
+    .edition-select{margin:6px 0 8px}
+    .star-picker{display:flex;gap:5px;margin:8px 0}
+    .star-picker button{font-size:1.6rem;background:none;border:0;color:#59657a;cursor:pointer;padding:0 2px}
+    .star-picker button.selected{color:#ffd76a}
+    .comment-list{display:grid;gap:9px;margin:12px 0}
+    .comment-item{background:#121b29;border:1px solid #29364b;border-radius:10px;padding:10px 12px;overflow-wrap:anywhere}
+    .comment-meta{font-size:.78rem;color:#a6ff4d;margin-bottom:4px;display:flex;justify-content:space-between;gap:8px}
+    .comment-form{display:grid;gap:8px}
+    .comment-form input,.comment-form textarea,.auth-box input{width:100%;padding:11px 12px;border:1px solid #2b3952;border-radius:10px;background:#0b1220;color:white;font:inherit}
+    .comment-form textarea{min-height:82px;resize:vertical}
+    .trailer-link{display:inline-flex;text-decoration:none;align-items:center;gap:7px}
+    .auth-note{color:#aab8ce;font-size:.85rem;line-height:1.5}
+    .auth-box{max-width:480px;margin:0 auto;text-align:center;padding:18px 0}
+    .google-btn{width:100%;padding:12px;border-radius:12px;border:1px solid #4b5b73;background:#f7f8fa;color:#202938;font:inherit;font-weight:750;cursor:pointer;margin:10px 0}
+    .modal .btn{margin-top:4px}
+    @media(max-width:650px){.feature-row{gap:6px}.feature-pill{font-size:.75rem}}
+
+  
+    /* Refined site header and full navigation footer */
+    .site-header{position:relative;margin:0 0 24px;padding:18px clamp(16px,3vw,30px) 22px;overflow:hidden;border:1px solid #30304b;border-radius:22px;background:linear-gradient(125deg,#11111d 0%,#17172b 58%,#17112b 100%);box-shadow:0 16px 44px #0003}
+    .site-header:after{content:"";position:absolute;width:230px;height:230px;right:-95px;top:-125px;border-radius:50%;border:1px solid #a6ff4d22;box-shadow:0 0 0 24px #a6ff4d08,0 0 0 48px #a6ff4d05;pointer-events:none}
+    .header-topline{display:flex;align-items:center;gap:9px;font-size:.69rem;font-weight:800;letter-spacing:.14em;color:#b8c0d6}
+    .live-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#a6ff4d;box-shadow:0 0 12px #a6ff4d99}
+    .header-topline-spacer{flex:1}.header-tag{font-size:.65rem;color:#858ba5;letter-spacing:.1em}
+    .header-main{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:22px 0 12px}
+    .brand-lockup{display:flex;align-items:center;gap:14px}.brand-mark,.footer-logo-mark{display:grid;place-items:center;position:relative;width:52px;height:52px;border-radius:15px;background:linear-gradient(145deg,#a6ff4d,#55d9a1);color:#10151b;font-size:1.18rem;font-weight:950;letter-spacing:-.08em;box-shadow:0 7px 24px #a6ff4d20}
+    .brand-mark span,.footer-logo-mark span{color:#6655c8}.brand h1{margin:0;font-size:clamp(1.7rem,4vw,2.65rem);letter-spacing:-.055em;line-height:1.08}.brand h1 span{color:#a6ff4d}.brand-subtitle{margin:5px 0 0;color:#929bb4;font-size:.83rem;letter-spacing:.04em}
+    .site-header .intro{max-width:850px;margin:16px 0 0;color:#b7bfd2;line-height:1.75}
+    .site-header .brand-badge{white-space:nowrap}
+    .site-footer{margin-top:44px;padding:28px clamp(16px,3vw,30px) 18px;border:1px solid #2c2c45;border-radius:22px;background:linear-gradient(145deg,#101019,#141421);color:#aab0c5}
+    .footer-main{display:grid;grid-template-columns:1.4fr .8fr .9fr 1.25fr;gap:28px;padding-bottom:26px}
+    .footer-logo{display:inline-flex;align-items:center;gap:10px;color:#f0f0f8;text-decoration:none;font-size:1.1rem;font-weight:850;letter-spacing:-.035em}.footer-logo b{color:#a6ff4d}.footer-logo-mark{width:36px;height:36px;border-radius:11px;font-size:.82rem}
+    .footer-tagline{margin:14px 0 5px;color:#e2e5f1;font-weight:700}.footer-disclaimer{max-width:250px;margin:0;color:#858ba2;font-size:.83rem;line-height:1.65}
+    .footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:10px}.footer-column h2{margin:4px 0 6px;color:#f1f2fa;font-size:.91rem;font-weight:800}.footer-column>a,.footer-signin{padding:0;border:0;background:none;color:#9da5bd;text-decoration:none;font:inherit;font-size:.84rem;cursor:pointer}.footer-column>a:hover,.footer-signin:hover{color:#a6ff4d}.footer-note-column p{margin:0;font-size:.83rem;line-height:1.7;color:#9097ad}.footer-column .footer-backtop{margin-top:4px;color:#c6ff9a;font-weight:750}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0 10px;border-top:1px solid #29293f;font-size:.79rem}.footer-bottom-links{display:flex;gap:18px}.footer-bottom a{color:#9da5bd;text-decoration:none}.footer-bottom a:hover{color:#a6ff4d}.footer-legal{margin:8px 0 0;color:#717990;font-size:.74rem;line-height:1.6}
+    @media(max-width:800px){.footer-main{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.footer-brand-column{grid-column:1/-1}.footer-disclaimer{max-width:440px}}
+    @media(max-width:520px){.header-tag{display:none}.site-header{padding:15px 15px 18px}.header-main{margin:18px 0 8px}.brand-mark{width:44px;height:44px;border-radius:13px}.brand-lockup{gap:10px}.brand h1{font-size:1.65rem}.brand-subtitle{font-size:.75rem}.site-header .brand-badge{font-size:.72rem;padding:6px 8px}.site-header .intro{font-size:.9rem}.footer-main{grid-template-columns:1fr 1fr;gap:22px 14px}.footer-bottom{align-items:flex-start;flex-direction:column}.footer-bottom-links{gap:14px}}
+
+    .gamespace-logo{display:block;object-fit:contain;flex-shrink:0;background:#000;border-radius:10px}
+    .nav-brand .gamespace-logo{width:42px;height:42px;border-radius:8px}
+    .brand-lockup .gamespace-logo{width:clamp(74px,10vw,112px);height:clamp(74px,10vw,112px);border-radius:14px;box-shadow:0 0 28px #078bff20}
+    .nav-brand{gap:10px}
+    @media(max-width:520px){.nav-brand .gamespace-logo{width:34px;height:34px}.brand-lockup .gamespace-logo{width:60px;height:60px}}
+
+  </style>
+  <script type="application/ld+json" id="websiteSchema">
+  {"@context":"https://schema.org","@type":"WebSite","name":"GameSpec Hub","description":"Search PC games and review basic system requirements and compatibility guidance.","url":"https://YOUR-USERNAME.github.io/gamespace/","potentialAction":{"@type":"SearchAction","target":"https://YOUR-USERNAME.github.io/gamespace/?q={search_term_string}","query-input":"required name=search_term_string"}}
+  </script>
+</head>
+<body>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
+<main class="app">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="nav-brand" href="#home"><img class="gamespace-logo" src="data:image/webp;base64,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" alt="GameSpace gaming logo"><span>GameSpace</span></a>
+    <div class="nav-links">
+      <a href="#gameLibrary">Game Library</a><a href="#topHeading">Top Games</a><a href="#pcChecker">Can I Run It?</a><a href="#faqHeading">FAQ</a><a class="nav-donate" href="#donate">♥ Donate</a><button class="btn nav-login" type="button" id="loginButton">Sign in</button>
+    </div>
+  </nav>
+  <header class="site-header" id="home">
+    <div class="header-topline"><span class="live-dot" aria-hidden="true"></span><span>YOUR NEXT LEVEL STARTS HERE</span><span class="header-topline-spacer"></span><span class="header-tag">PC GAMING • SPECS • DISCOVERY</span></div>
+    <div class="header-main">
+      <div class="brand-lockup"><img class="gamespace-logo" src="data:image/webp;base64,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" alt="GameSpace gaming logo"><div class="brand"><h1>GameSpace</h1><p class="brand-subtitle">Find it. Check it. Play it.</p></div></div>
+      <span class="brand-badge" id="gameCount">90 games</span>
+    </div>
+    <p class="intro">Discover games, check basic RAM and storage notes, explore editions and trailers, and share your rating with the community. Requirements can vary by game version, updates, and graphics settings—always confirm with the official publisher or store page.</p>
+  </header>
+  <section class="hero" aria-labelledby="heroTitle">
+    <span class="hero-kicker">⚡ LEVEL UP YOUR NEXT PLAY</span>
+    <h2 id="heroTitle">Find your next game.<br><span>Check your PC.</span></h2>
+    <p class="hero-copy">Discover your next obsession, browse cinematic game covers, and compare basic RAM and storage notes before you install.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="#gameLibrary" style="text-decoration:none">Explore games ↓</a><a class="btn" href="#pcChecker" style="text-decoration:none">🖥️ Check my PC</a></div>
+    <div class="hero-stats" aria-label="Website features"><div class="hero-stat"><strong>90+</strong><span>Game entries</span></div><div class="hero-stat"><strong>Free</strong><span>No sign-up needed</span></div><div class="hero-stat"><strong>Quick</strong><span>Search & compare</span></div></div>
+  </section>
+
+  <section aria-label="Search and filters" id="gameLibrary">
+    <div class="toolbar">
+      <div class="search-wrap"><label class="hidden" for="searchInput">Search games</label><input type="search" id="searchInput" placeholder="Search games, genres… (e.g. Cyberpunk)" autocomplete="off"></div>
+      <div class="toolbar-side"><label class="hidden" for="sortSelect">Sort games</label><select id="sortSelect"><option value="default">Default order</option><option value="name">Name A–Z</option><option value="ram">RAM: low to high</option><option value="storage">Storage: low to high</option></select></div>
+      <button class="btn" id="favoritesToggle" aria-pressed="false">♡ Favorites</button>
+    </div>
+    <div class="filters" id="filterChips" aria-label="Filter by performance tier">
+      <button class="chip active" data-tier="all" aria-pressed="true">All tiers</button>
+      <button class="chip" data-tier="vlow" aria-pressed="false">🟢 Very Low</button>
+      <button class="chip" data-tier="low" aria-pressed="false">🔵 Low</button>
+      <button class="chip" data-tier="mid" aria-pressed="false">🟡 Mid</button>
+      <button class="chip" data-tier="high" aria-pressed="false">🔴 High</button>
+      <button class="chip" data-tier="ultra" aria-pressed="false">💜 Ultra / RT</button>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="topHeading">
+    <h2 id="topHeading">🏆 Demanding games to explore</h2>
+    <p class="muted">This list is a browsing collection, not a benchmark ranking.</p>
+    <div class="top10-grid" id="top10Grid"></div>
+  </section>
+
+  <section aria-label="Game list">
+    <p class="muted" id="resultCount" aria-live="polite"></p>
+    <div class="game-grid" id="gameGrid"></div>
+    <div id="noResults" class="empty hidden">No games match your search. Try a different name or tier.</div>
+  </section>
+
+  <section class="section" id="pcChecker" aria-labelledby="checkerHeading">
+    <h2 id="checkerHeading">🖥️ Basic “Can I Run It?” checker</h2>
+    <p class="muted">Choose a game and enter your PC’s RAM and available storage. This is only a preliminary check—it cannot verify CPU/GPU performance or promise a specific FPS.</p>
+    <div class="checker-grid">
+      <div><label for="checkerGameSearch">Search game by name</label><input id="checkerGameSearch" type="search" list="gameNameOptions" placeholder="Type a game name… e.g. GTA V" autocomplete="off"><datalist id="gameNameOptions"></datalist><p class="muted">Start typing and choose a game from the suggestions.</p></div>
+      <div><label for="pcRam">Installed RAM (GB)</label><input id="pcRam" type="number" min="1" max="512" step="1" value="4"></div>
+      <div><label for="pcStorage">Free storage (GB)</label><input id="pcStorage" type="number" min="0" max="100000" step="1" value="20"></div>
+      <div><label for="pcGpu">Graphics card (optional)</label><input id="pcGpu" type="text" placeholder="e.g. Intel UHD Graphics"></div>
+      <div><label for="pcCpu">Processor (optional)</label><input id="pcCpu" type="text" placeholder="e.g. Intel Core i5-8250U"></div>
+    </div>
+    <button class="btn btn-primary" id="checkPc" style="margin-top:14px">Check basic compatibility</button>
+    <div class="checker-result" id="checkerResult" aria-live="polite">Select a game and check your RAM and storage.</div>
+  </section>
+
+  <section class="donate-panel" id="donate" aria-labelledby="donateHeading">
+    <div>
+      <h2 id="donateHeading">💜 Support GameSpec Hub</h2>
+      <p>Enjoy using this free gaming reference? A small voluntary contribution helps support improvements, testing, and future features. Thank you for supporting an independent project.</p>
+      <div class="upi-row"><span>UPI ID</span><span class="upi-id" id="upiIdText">sibiak227@okicici</span><button class="btn" type="button" id="copyUpi">Copy UPI ID</button></div>
+      <p class="donate-note" id="upiStatus" aria-live="polite">Donations are optional. Please verify the UPI recipient in your payment app before confirming.</p>
+    </div>
+    <div class="donate-actions"><a class="btn btn-primary" href="upi://pay?pa=sibiak227%40okicici&amp;pn=GameSpec%20Hub&amp;cu=INR&amp;tn=Support%20GameSpec%20Hub">♥ Donate with UPI</a></div>
+  </section>
+
+  <section class="section faq" aria-labelledby="faqHeading">
+    <h2 id="faqHeading">Frequently asked questions</h2>
+    <details><summary>How do I know whether a PC game will run on my computer?</summary><p>Compare your PC’s processor, graphics card, RAM, operating system, and available storage with the game publisher’s minimum requirements. Meeting RAM and storage alone does not guarantee the game will run smoothly.</p></details>
+    <details><summary>Does GameSpec Hub guarantee FPS?</summary><p>No. FPS depends on the exact CPU and GPU, resolution, graphics settings, drivers, cooling, and game version. This page does not provide benchmark-based FPS predictions.</p></details>
+    <details><summary>How do ratings and comments work?</summary><p>This demo stores ratings, display name, and comments in this browser using local storage. Other visitors cannot see them. Shared community features and real Google sign-in require a database and authentication backend.</p></details><details><summary>Are all requirements verified?</summary><p>No. Game entries in this starter version include basic RAM and storage notes for browsing. Verify the exact minimum and recommended requirements on the official store or publisher page before installing or buying a game.</p></details>
+    <details><summary>Why do some game images look different or fail to load?</summary><p>Artwork is loaded from public Steam CDN URLs where a matching Steam app ID is available. Other entries use a labelled fallback image. External images need an internet connection and may change outside this site’s control.</p></details>
+  </section>
+  <footer class="site-footer" aria-label="Website footer">
+    <div class="footer-main">
+      <div class="footer-brand-column">
+        <a class="footer-logo" href="#home" aria-label="GameSpec Hub home"><span class="footer-logo-mark">GS<span>+</span></span><span>GameSpec <b>Hub</b></span></a>
+        <p class="footer-tagline">Your next game starts with the right specs.</p>
+        <p class="footer-disclaimer">An independent gaming discovery and PC reference hub, built for players.</p>
+      </div>
+      <div class="footer-column"><h2>Explore</h2><a href="#gameLibrary">Game Library</a><a href="#topHeading">Top Games</a><a href="#pcChecker">Can I Run It?</a><a href="#faqHeading">FAQs</a></div>
+      <div class="footer-column"><h2>Community</h2><a href="#gameLibrary">Rate a Game</a><a href="#gameLibrary">Write a Comment</a><a href="#donate">Support the Project</a><button type="button" class="footer-signin" id="footerLoginButton">Sign in / Profile</button></div>
+      <div class="footer-column footer-note-column"><h2>Good to know</h2><p>System requirements are reference estimates, not a guarantee of performance. Check official store and publisher pages before purchasing or installing.</p><a class="footer-backtop" href="#home">Back to top ↑</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="footerYear">2026</span> GameSpec Hub. Made for gamers.</span><span class="footer-bottom-links"><a href="#faqHeading">Help & FAQ</a><a href="#donate">Support</a></span></div>
+    <p class="footer-legal">Game titles and artwork belong to their respective owners. GameSpec Hub is an independent fan reference and is not affiliated with Steam, Epic Games, or game publishers.</p>
+  </footer>
+</main>
+
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" id="modalContent"></div>
+</div>
+<div class="modal-overlay" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal" id="authContent"><button class="modal-close" id="closeAuth" aria-label="Close sign in">✕</button><div class="auth-box"><h2 id="authTitle">Welcome to GameSpec Hub</h2><p class="auth-note">Sign in to attach a display name to your local comments. Real Google authentication needs your own Google OAuth client ID and secure backend setup.</p><label for="displayName">Display name</label><input id="displayName" maxlength="32" placeholder="Enter a display name" autocomplete="nickname"><button class="btn btn-primary" id="saveProfile" type="button">Continue as player</button><button class="google-btn" id="googleSignIn" type="button">G&nbsp; Continue with Google</button><p class="auth-note" id="authStatus" aria-live="polite">Google sign-in is shown as an option, but is not connected until OAuth is configured.</p></div></div>
+</div>
+
+<script>
+'use strict';
+const games = [
+  {id:1,name:"Stardew Valley",tier:"vlow",genre:"Simulation / RPG",ram:4,storage:1,steam:413150},
+  {id:2,name:"Terraria",tier:"vlow",genre:"Sandbox / Adventure",ram:4,storage:1,steam:105600},
+  {id:3,name:"Undertale",tier:"vlow",genre:"RPG / Indie",ram:4,storage:1,steam:391540},
+  {id:4,name:"Papers, Please",tier:"vlow",genre:"Simulation / Puzzle",ram:4,storage:2,steam:239030},
+  {id:5,name:"Hotline Miami",tier:"vlow",genre:"Action / Indie",ram:4,storage:2,steam:219150},
+  {id:6,name:"FTL: Faster Than Light",tier:"vlow",genre:"Strategy / Roguelike",ram:4,storage:1,steam:212680},
+  {id:7,name:"Limbo",tier:"vlow",genre:"Puzzle / Platformer",ram:4,storage:1,steam:48000},
+  {id:8,name:"Inside",tier:"vlow",genre:"Puzzle / Platformer",ram:4,storage:2,steam:304430},
+  {id:9,name:"Celeste",tier:"vlow",genre:"Platformer / Indie",ram:4,storage:1,steam:504230},
+  {id:10,name:"Portal",tier:"vlow",genre:"Puzzle / Platformer",ram:4,storage:2,steam:400},
+  {id:11,name:"Portal 2",tier:"vlow",genre:"Puzzle / Platformer",ram:4,storage:8,steam:620},
+  {id:12,name:"Half-Life 2",tier:"vlow",genre:"FPS / Action",ram:4,storage:6,steam:220},
+  {id:13,name:"Among Us",tier:"vlow",genre:"Social Deduction",ram:4,storage:1,steam:945360},
+  {id:14,name:"Vampire Survivors",tier:"vlow",genre:"Roguelike / Action",ram:4,storage:1,steam:1794680},
+  {id:15,name:"Balatro",tier:"vlow",genre:"Roguelike / Card",ram:4,storage:1,steam:2379780},
+  {id:16,name:"Left 4 Dead 2",tier:"low",genre:"FPS / Co-op",ram:4,storage:13,steam:550},
+  {id:17,name:"Team Fortress 2",tier:"low",genre:"FPS / Multiplayer",ram:4,storage:15,steam:440},
+  {id:18,name:"Counter-Strike 2",tier:"low",genre:"FPS / Competitive",ram:8,storage:85,steam:730},
+  {id:19,name:"Brawlhalla",tier:"low",genre:"Platform Fighter",ram:4,storage:2,steam:291550},
+  {id:20,name:"Hades",tier:"low",genre:"Roguelike / Action",ram:8,storage:15,steam:1145360},
+  {id:21,name:"Hollow Knight",tier:"low",genre:"Metroidvania",ram:4,storage:9,steam:367520},
+  {id:22,name:"Cuphead",tier:"low",genre:"Run and Gun",ram:4,storage:4,steam:268910},
+  {id:23,name:"Dead Cells",tier:"low",genre:"Roguelike / Action",ram:4,storage:1,steam:588650},
+  {id:24,name:"Don't Starve",tier:"low",genre:"Survival / Indie",ram:4,storage:1,steam:219740},
+  {id:25,name:"Euro Truck Simulator 2",tier:"low",genre:"Simulation",ram:6,storage:12,steam:227300},
+  {id:26,name:"Mount & Blade: Warband",tier:"low",genre:"RPG / Strategy",ram:4,storage:6,steam:48700},
+  {id:27,name:"Fallout: New Vegas",tier:"low",genre:"RPG / Open World",ram:4,storage:10,steam:22380},
+  {id:28,name:"The Elder Scrolls V: Skyrim",tier:"low",genre:"RPG / Open World",ram:8,storage:12,steam:72850},
+  {id:29,name:"BioShock Infinite",tier:"low",genre:"FPS / Story",ram:6,storage:20,steam:8870},
+  {id:30,name:"Borderlands 2",tier:"low",genre:"FPS / RPG",ram:6,storage:13,steam:49520},
+  {id:31,name:"Far Cry 3",tier:"low",genre:"FPS / Open World",ram:6,storage:15,steam:220240},
+  {id:32,name:"GTA IV",tier:"low",genre:"Action / Open World",ram:6,storage:22,steam:12210},
+  {id:33,name:"GTA V",tier:"low",genre:"Action / Open World",ram:8,storage:95,steam:271590},
+  {id:34,name:"Minecraft",tier:"low",genre:"Sandbox / Survival",ram:8,storage:4},
+  {id:35,name:"Roblox",tier:"low",genre:"Sandbox / MMO",ram:4,storage:1},
+  {id:36,name:"Forza Horizon 4",tier:"mid",genre:"Racing",ram:12,storage:80,steam:1293830},
+  {id:37,name:"Forza Horizon 5",tier:"mid",genre:"Racing",ram:16,storage:110,steam:1551360},
+  {id:38,name:"Apex Legends",tier:"mid",genre:"Battle Royale",ram:8,storage:75,steam:1172470},
+  {id:39,name:"Valorant",tier:"mid",genre:"Tactical FPS",ram:4,storage:30},
+  {id:40,name:"Overwatch 2",tier:"mid",genre:"Hero Shooter",ram:8,storage:50},
+  {id:41,name:"Rainbow Six Siege",tier:"mid",genre:"Tactical FPS",ram:8,storage:85,steam:359550},
+  {id:42,name:"The Witcher 3",tier:"mid",genre:"RPG / Open World",ram:8,storage:50,steam:292030},
+  {id:43,name:"Tomb Raider",tier:"mid",genre:"Action / Adventure",ram:8,storage:25,steam:203160},
+  {id:44,name:"Rise of the Tomb Raider",tier:"mid",genre:"Action / Adventure",ram:8,storage:30,steam:391220},
+  {id:45,name:"Shadow of the Tomb Raider",tier:"mid",genre:"Action / Adventure",ram:8,storage:40,steam:750920},
+  {id:46,name:"Resident Evil 2",tier:"mid",genre:"Survival Horror",ram:8,storage:26,steam:883710},
+  {id:47,name:"Resident Evil 3",tier:"mid",genre:"Survival Horror",ram:8,storage:45,steam:952060},
+  {id:48,name:"Resident Evil 7",tier:"mid",genre:"Survival Horror",ram:8,storage:24,steam:418370},
+  {id:49,name:"Resident Evil 4",tier:"mid",genre:"Survival Horror",ram:8,storage:60,steam:2050650},
+  {id:50,name:"Monster Hunter: World",tier:"mid",genre:"Action RPG",ram:8,storage:50,steam:582010},
+  {id:51,name:"Sekiro: Shadows Die Twice",tier:"mid",genre:"Action / Soulslike",ram:8,storage:25,steam:814380},
+  {id:52,name:"Elden Ring",tier:"mid",genre:"Action RPG",ram:12,storage:60,steam:1245620},
+  {id:53,name:"Doom Eternal",tier:"mid",genre:"FPS",ram:8,storage:80,steam:782330},
+  {id:54,name:"Death Stranding",tier:"mid",genre:"Action / Adventure",ram:8,storage:80,steam:1190460},
+  {id:55,name:"Red Dead Redemption",tier:"mid",genre:"Action / Open World",ram:8,storage:20,steam:2668510},
+  {id:56,name:"Cyberpunk 2077",tier:"high",genre:"Action RPG",ram:16,storage:70,steam:1091500},
+  {id:57,name:"Red Dead Redemption 2",tier:"high",genre:"Action / Open World",ram:16,storage:150,steam:1174180},
+  {id:58,name:"Hogwarts Legacy",tier:"high",genre:"Action RPG",ram:16,storage:85,steam:990080},
+  {id:59,name:"God of War",tier:"high",genre:"Action / Adventure",ram:16,storage:70,steam:1593500},
+  {id:60,name:"God of War Ragnarök",tier:"high",genre:"Action / Adventure",ram:16,storage:190,steam:2322010},
+  {id:61,name:"Marvel's Spider-Man Remastered",tier:"high",genre:"Action / Adventure",ram:16,storage:75,steam:1817070},
+  {id:62,name:"Marvel's Spider-Man 2",tier:"high",genre:"Action / Adventure",ram:16,storage:90,steam:2651280},
+  {id:63,name:"The Last of Us Part I",tier:"high",genre:"Action / Survival",ram:16,storage:80,steam:1888930},
+  {id:64,name:"The Last of Us Part II",tier:"high",genre:"Action / Survival",ram:16,storage:100,steam:2531310},
+  {id:65,name:"Alan Wake 2",tier:"high",genre:"Survival Horror",ram:16,storage:90},
+  {id:66,name:"Black Myth: Wukong",tier:"high",genre:"Action RPG",ram:16,storage:130,steam:2358720},
+  {id:67,name:"Star Wars Outlaws",tier:"high",genre:"Action / Adventure",ram:16,storage:90},
+  {id:68,name:"Avatar: Frontiers of Pandora",tier:"high",genre:"Action / Adventure",ram:16,storage:90},
+  {id:69,name:"Ratchet & Clank: Rift Apart",tier:"high",genre:"Action / Platformer",ram:16,storage:75,steam:1895880},
+  {id:70,name:"A Plague Tale: Requiem",tier:"high",genre:"Action / Adventure",ram:16,storage:55,steam:1182900},
+  {id:71,name:"Microsoft Flight Simulator",tier:"high",genre:"Simulation",ram:16,storage:150,steam:1250410},
+  {id:72,name:"Forza Motorsport",tier:"high",genre:"Racing",ram:16,storage:100,steam:2440510},
+  {id:73,name:"Assassin's Creed Mirage",tier:"high",genre:"Action / Adventure",ram:16,storage:40},
+  {id:74,name:"Assassin's Creed Shadows",tier:"high",genre:"Action / Adventure",ram:16,storage:100},
+  {id:75,name:"Monster Hunter Wilds",tier:"high",genre:"Action RPG",ram:16,storage:75,steam:2246340},
+  {id:76,name:"Cyberpunk 2077 — Ray Tracing",tier:"ultra",genre:"Action RPG / Ray Tracing",ram:16,storage:70,steam:1091500},
+  {id:77,name:"Alan Wake 2 (Ultra RT)",tier:"ultra",genre:"Survival Horror / Ray Tracing",ram:16,storage:90},
+  {id:78,name:"Black Myth: Wukong (Ultra)",tier:"ultra",genre:"Action RPG / Ultra settings",ram:16,storage:130,steam:2358720},
+  {id:79,name:"Microsoft Flight Simulator (Ultra)",tier:"ultra",genre:"Simulation / Ultra settings",ram:32,storage:150,steam:1250410},
+  {id:80,name:"Monster Hunter Wilds (Ultra)",tier:"ultra",genre:"Action RPG / Ultra settings",ram:16,storage:75,steam:2246340},
+  {id:81,name:"Star Wars Outlaws (Ultra)",tier:"ultra",genre:"Action / Adventure / Ultra",ram:16,storage:90},
+  {id:82,name:"Avatar: Frontiers of Pandora (Ultra)",tier:"ultra",genre:"Action / Adventure / Ultra",ram:16,storage:90},
+  {id:83,name:"Hogwarts Legacy (Ultra)",tier:"ultra",genre:"Action RPG / Ultra settings",ram:32,storage:85,steam:990080},
+  {id:84,name:"The Last of Us Part I (Ultra)",tier:"ultra",genre:"Action / Survival / Ultra",ram:32,storage:80,steam:1888930},
+  {id:85,name:"Marvel's Spider-Man 2 (Ultra)",tier:"ultra",genre:"Action / Adventure / Ultra",ram:32,storage:90,steam:2651280},
+  {id:86,name:"Forza Motorsport (Ultra)",tier:"ultra",genre:"Racing / Ultra settings",ram:16,storage:100,steam:2440510},
+  {id:87,name:"Red Dead Redemption 2 (Ultra)",tier:"ultra",genre:"Action / Open World / Ultra",ram:16,storage:150,steam:1174180},
+  {id:88,name:"DCS World",tier:"ultra",genre:"Simulation",ram:32,storage:150,steam:223750},
+  {id:89,name:"Microsoft Flight Simulator 2024",tier:"ultra",genre:"Simulation",ram:32,storage:150,steam:2537590},
+  {id:90,name:"Control",tier:"ultra",genre:"Action / Adventure / Ray Tracing",ram:16,storage:42,steam:870780}
+];
+
+const tierLabels={vlow:"Very Low",low:"Low",mid:"Mid-Range",high:"High-End",ultra:"Ultra / RT"};
+const fallbackSvg = (name) => "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="100%" height="100%" fill="#171725"/><text x="50%" y="43%" text-anchor="middle" font-size="56" fill="#9a9ab8">🎮</text><text x="50%" y="65%" text-anchor="middle" font-family="Arial" font-size="22" fill="#ddd">${String(name).replace(/[<>&"]/g,"")}</text><text x="50%" y="77%" text-anchor="middle" font-family="Arial" font-size="15" fill="#8888aa">Artwork unavailable</text></svg>`);
+function imageUrl(game){return game.steam?`https://cdn.akamai.steamstatic.com/steam/apps/${game.steam}/header.jpg`:fallbackSvg(game.name)}
+function safeText(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function cardImage(game,cls=''){return `<img class="${cls}" src="${imageUrl(game)}" alt="${safeText(game.name)} game artwork" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${fallbackSvg(game.name)}'">`}
+let currentTier='all',searchQuery='',favoritesOnly=false;
+let favorites=new Set();
+try{favorites=new Set(JSON.parse(localStorage.getItem('gamespec-favorites')||'[]'))}catch(e){favorites=new Set()}
+const $=id=>document.getElementById(id);
+let playerProfile=null;
+try{playerProfile=JSON.parse(localStorage.getItem('gamespec-profile')||'null')}catch(e){playerProfile=null}
+function getRatings(){try{return JSON.parse(localStorage.getItem('gamespec-ratings')||'{}')}catch(e){return {}}}
+function getComments(){try{return JSON.parse(localStorage.getItem('gamespec-comments')||'{}')}catch(e){return {}}}
+function averageRating(gameId){const list=getRatings()[gameId]||[];return list.length?list.reduce((sum,x)=>sum+Number(x.value||0),0)/list.length:0}
+function ratingCount(gameId){return (getRatings()[gameId]||[]).length}
+function trailerUrl(game){return 'https://www.youtube.com/results?search_query='+encodeURIComponent(game.name+' official game trailer')}
+function updateLoginLabel(){$('loginButton').textContent=playerProfile?'👤 '+playerProfile.name:'Sign in'}
+function openAuth(){ $('authOverlay').classList.add('open'); $('displayName').value=playerProfile?.name||''; $('authStatus').textContent='Google sign-in is shown as an option, but is not connected until OAuth is configured.'; }
+function closeAuth(){ $('authOverlay').classList.remove('open') }
+
+
+// Smooth, lightweight scroll polish: reveal content as it enters view and show reading progress.
+function setupScrollMotion(){
+  const revealTargets = document.querySelectorAll('.hero,.toolbar,.filters,.section,.donate-panel,.faq,.footer');
+  revealTargets.forEach(el=>el.classList.add('reveal'));
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}
+      });
+    },{threshold:0.08,rootMargin:'0px 0px -35px 0px'});
+    revealTargets.forEach(el=>observer.observe(el));
+  }else{
+    revealTargets.forEach(el=>el.classList.add('is-visible'));
+  }
+  const bar=$('scrollProgressBar');
+  let ticking=false;
+  const update=()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(max>0?Math.min(100,window.scrollY/max*100):0)+'%';
+    ticking=false;
+  };
+  window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
+  update();
+}
+
+function renderTop(){
+ const items=games.filter(g=>['high','ultra'].includes(g.tier)).slice().reverse().slice(0,10);
+ $('top10Grid').innerHTML=items.map((g,i)=>`<button class="top10-item" type="button" data-open="${g.id}"><span class="rank">${String(i+1).padStart(2,'0')}</span>${cardImage(g,'top-thumb')}<span class="top-name">${safeText(g.name)}</span></button>`).join('');
+}
+function renderCheckerOptions(){
+ $('gameNameOptions').innerHTML=games.map(g=>`<option value="${safeText(g.name)}"></option>`).join('');
+}
+function getFiltered(){
+ let result=games.filter(g=>(currentTier==='all'||g.tier===currentTier)&&(!favoritesOnly||favorites.has(g.id))&&(`${g.name} ${g.genre}`.toLowerCase().includes(searchQuery)));
+ const sort=$('sortSelect').value;
+ if(sort==='name')result.sort((a,b)=>a.name.localeCompare(b.name));
+ if(sort==='ram')result.sort((a,b)=>a.ram-b.ram||a.name.localeCompare(b.name));
+ if(sort==='storage')result.sort((a,b)=>a.storage-b.storage||a.name.localeCompare(b.name));
+ return result;
+}
+function renderGames(){
+ const result=getFiltered();
+ $('resultCount').textContent=`Showing ${result.length} of ${games.length} games`;
+ $('noResults').classList.toggle('hidden',result.length!==0);
+ $('gameGrid').innerHTML=result.map(g=>`<article class="card">
+  <div class="card-art">${cardImage(g)}<span class="tier">${tierLabels[g.tier]}</span></div>
+  <div class="card-body"><div class="game-title">${safeText(g.name)}</div><div class="game-genre">${safeText(g.genre)}</div>
+  <div class="specs"><div><span class="spec-label">RAM note</span><span class="spec-value">${g.ram} GB</span></div><div><span class="spec-label">Storage note</span><span class="spec-value">${g.storage} GB</span></div></div>
+  <div class="card-actions"><button class="btn" type="button" data-open="${g.id}">Details</button><button class="btn btn-primary" type="button" data-check="${g.id}">Can I run it?</button><button class="btn favorite" type="button" data-fav="${g.id}" aria-label="${favorites.has(g.id)?'Remove from':'Add to'} favorites">${favorites.has(g.id)?'♥':'♡'}</button></div></div></article>`).join('');
+}
+function openModal(id){
+ const g=games.find(x=>x.id===Number(id));if(!g)return;
+ const ratings=getRatings(),myRating=(ratings[g.id]||[]).find(r=>playerProfile&&r.user===playerProfile.name)?.value||0;
+ const comments=getComments(),gameComments=comments[g.id]||[];
+ $('modalContent').innerHTML=`<button class="modal-close" id="closeModal" aria-label="Close details">✕</button>${cardImage(g,'modal-image')}<h2 id="modalTitle">${safeText(g.name)}</h2><p class="muted">${safeText(g.genre)} · ${tierLabels[g.tier]}</p>
+ <div class="rating-line"><span class="rating-stars">★</span><strong>${averageRating(g.id)?averageRating(g.id).toFixed(1):'Not rated yet'}</strong><span class="muted">(${ratingCount(g.id)} community ratings)</span></div>
+ <div class="feature-row"><span class="feature-pill">🖥️ ${g.ram} GB RAM reference</span><span class="feature-pill">💾 ${g.storage} GB storage reference</span><span class="feature-pill">🎮 ${tierLabels[g.tier]}</span></div>
+ <div class="req-grid"><div class="req-item"><b>RAM reference</b>${g.ram} GB</div><div class="req-item"><b>Storage reference</b>${g.storage} GB</div><div class="req-item"><b>Edition</b><select class="edition-select" id="editionSelect" aria-label="Choose edition"><option value="Standard">Standard Edition</option><option value="Deluxe">Deluxe Edition (if available)</option><option value="Ultimate">Ultimate Edition (if available)</option><option value="Complete">Complete / GOTY Edition (if available)</option></select><div class="muted" id="editionNote">Edition names and availability vary by game and store. Verify on the official listing.</div></div><div class="req-item"><b>Official listing</b>${g.steam?`<a href="https://store.steampowered.com/app/${g.steam}/" target="_blank" rel="noopener noreferrer">Check Steam page ↗</a>`:'<a href="https://www.google.com/search?q='+encodeURIComponent(g.name+' official game store')+'" target="_blank" rel="noopener noreferrer">Find official store ↗</a>'}</div></div>
+ <div class="detail-section"><h3>▶ Official trailer search</h3><p class="muted">Find the official trailer for this game on YouTube.</p><a class="btn btn-primary trailer-link" href="${trailerUrl(g)}" target="_blank" rel="noopener noreferrer">▶ Watch trailer ↗</a></div>
+ <div class="detail-section"><h3>⭐ Rate this game</h3><p class="muted">Choose a rating from 1 to 5 stars. Ratings are saved in this browser.</p><div class="star-picker" id="starPicker" role="group" aria-label="Rate this game">${[1,2,3,4,5].map(n=>`<button type="button" data-rate="${n}" class="${n<=myRating?'selected':''}" aria-label="${n} star${n>1?'s':''}">★</button>`).join('')}</div><p class="muted" id="ratingStatus">${playerProfile?'Your rating: '+(myRating||'not rated'):'Sign in with a display name to rate this game.'}</p></div>
+ <div class="detail-section"><h3>💬 Community comments (${gameComments.length})</h3><div class="comment-list" id="commentList">${gameComments.length?gameComments.slice().reverse().map(c=>`<div class="comment-item"><div class="comment-meta"><strong>${safeText(c.name||'Player')}</strong><span>${safeText(c.date||'')}</span></div><div>${safeText(c.text)}</div></div>`).join(''):'<p class="muted">No comments yet. Be the first to share your thoughts.</p>'}</div><form class="comment-form" id="commentForm"><label for="commentText">Add a comment</label><textarea id="commentText" maxlength="500" placeholder="What do you think about this game?" required></textarea><button class="btn btn-primary" type="submit">Post comment</button><p class="muted">Comments are stored only in this browser on this device. They are not shared with other visitors.</p></form></div>
+ <div class="notice">Data note: RAM/storage values are starter references, not verified full system requirements. Confirm requirements and edition details with the publisher or official store.</div>`;
+ $('modalOverlay').classList.add('open');$('closeModal').focus();
+ $('starPicker').addEventListener('click',e=>{const b=e.target.closest('[data-rate]');if(!b)return;if(!playerProfile){$('ratingStatus').textContent='Please sign in with a display name before rating.';openAuth();return;}const value=Number(b.dataset.rate);const all=getRatings();const list=all[g.id]||[];const existing=list.findIndex(r=>r.user===playerProfile.name);if(existing>=0)list[existing]={user:playerProfile.name,value};else list.push({user:playerProfile.name,value});all[g.id]=list;localStorage.setItem('gamespec-ratings',JSON.stringify(all));$('ratingStatus').textContent='Your rating: '+value+' / 5';$('starPicker').querySelectorAll('button').forEach(x=>x.classList.toggle('selected',Number(x.dataset.rate)<=value));const avg=averageRating(g.id);document.querySelectorAll('.rating-line').forEach(el=>{if(el.closest('.card')){const card=el.closest('.card');if(card.querySelector('[data-open="'+g.id+'"]'))el.innerHTML=`<span class="rating-stars">★</span><strong>${avg.toFixed(1)}</strong><span class="muted">(${ratingCount(g.id)} ratings)</span>`;}});});
+ $('commentForm').addEventListener('submit',e=>{e.preventDefault();if(!playerProfile){openAuth();$('authStatus').textContent='Choose a display name to post a comment.';return;}const textValue=$('commentText').value.trim();if(!textValue)return;const all=getComments();all[g.id]=all[g.id]||[];all[g.id].push({name:playerProfile.name,text:textValue,date:new Date().toLocaleDateString()});localStorage.setItem('gamespec-comments',JSON.stringify(all));openModal(g.id);});
+}
+function closeModal(){$('modalOverlay').classList.remove('open')}
+function checkPc(){
+ const typedName=$('checkerGameSearch').value.trim().toLowerCase();
+ const g=games.find(x=>x.name.toLowerCase()===typedName);
+ if(!g){$('checkerResult').textContent='Please type a game name and select/enter an exact matching game from the suggestions.';return;}
+ const ram=Number($('pcRam').value),storage=Number($('pcStorage').value);
+ if(!Number.isFinite(ram)||ram<=0||!Number.isFinite(storage)||storage<0){$('checkerResult').textContent='Enter valid RAM and free-storage values.';return}
+ const ramOk=ram>=g.ram,storageOk=storage>=g.storage;
+ let heading=(ramOk&&storageOk)?'RAM and storage meet the listed reference values.':(!ramOk&&!storageOk)?'RAM and free storage are both below the listed reference values.':!ramOk?'RAM is below the listed reference value.':'Free storage is below the listed reference value.';
+ $('checkerResult').innerHTML=`<strong>${safeText(heading)}</strong><p>Selected game: ${safeText(g.name)}</p><ul><li>RAM: ${ram} GB available/installed vs ${g.ram} GB reference — ${ramOk?'meets':'below'}.</li><li>Free storage: ${storage} GB vs ${g.storage} GB reference — ${storageOk?'meets':'below'}.</li></ul><p class="muted">This is not a full compatibility verdict. CPU/GPU, OS, drivers, and exact official requirements have not been verified here. ${$('pcGpu').value.trim()?'GPU entered: '+safeText($('pcGpu').value.trim())+'. ':''}${$('pcCpu').value.trim()?'CPU entered: '+safeText($('pcCpu').value.trim())+'.':''}</p>`;
+}
+$('searchInput').addEventListener('input',e=>{searchQuery=e.target.value.trim().toLowerCase();renderGames()});
+$('sortSelect').addEventListener('change',renderGames);
+$('filterChips').addEventListener('click',e=>{const b=e.target.closest('[data-tier]');if(!b)return;currentTier=b.dataset.tier;document.querySelectorAll('.chip').forEach(c=>{const active=c===b;c.classList.toggle('active',active);c.setAttribute('aria-pressed',String(active))});renderGames()});
+$('favoritesToggle').addEventListener('click',()=>{favoritesOnly=!favoritesOnly;$('favoritesToggle').setAttribute('aria-pressed',String(favoritesOnly));$('favoritesToggle').textContent=favoritesOnly?'♥ Showing favorites':'♡ Favorites';renderGames()});
+document.addEventListener('click',e=>{
+ const open=e.target.closest('[data-open]');if(open){openModal(open.dataset.open);return}
+ const check=e.target.closest('[data-check]');if(check){const selectedGame=games.find(g=>g.id===Number(check.dataset.check));if(selectedGame)$('checkerGameSearch').value=selectedGame.name;$('pcChecker').scrollIntoView({behavior:'smooth',block:'start'});checkPc();return}
+ const fav=e.target.closest('[data-fav]');if(fav){const id=Number(fav.dataset.fav);favorites.has(id)?favorites.delete(id):favorites.add(id);try{localStorage.setItem('gamespec-favorites',JSON.stringify([...favorites]))}catch(e){}renderGames()}
+});
+$('checkPc').addEventListener('click',checkPc);
+$('copyUpi').addEventListener('click',async()=>{const upi=$('upiIdText').textContent.trim();try{await navigator.clipboard.writeText(upi);$('upiStatus').textContent='UPI ID copied. Open your payment app and verify the recipient before paying.';}catch(e){$('upiStatus').textContent='Copy not available in this browser. Please select and copy this UPI ID manually: '+upi;}});
+$('modalContent').addEventListener('click',e=>{if(e.target.closest('#closeModal'))closeModal()});
+$('modalOverlay').addEventListener('click',e=>{if(e.target===$('modalOverlay'))closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+$('loginButton').addEventListener('click',openAuth);
+$('footerLoginButton').addEventListener('click',openAuth);
+$('footerYear').textContent=String(new Date().getFullYear());
+$('closeAuth').addEventListener('click',closeAuth);
+$('authOverlay').addEventListener('click',e=>{if(e.target===$('authOverlay'))closeAuth()});
+$('saveProfile').addEventListener('click',()=>{const name=$('displayName').value.trim().slice(0,32);if(!name){$('authStatus').textContent='Please enter a display name.';return;}playerProfile={name};localStorage.setItem('gamespec-profile',JSON.stringify(playerProfile));updateLoginLabel();closeAuth();if($('modalOverlay').classList.contains('open')){const title=$('modalContent').querySelector('#modalTitle');if(title){const g=games.find(x=>x.name===title.textContent);if(g)openModal(g.id)}}});
+$('googleSignIn').addEventListener('click',()=>{$('authStatus').textContent='Google OAuth is not connected yet. To enable real Google login, configure a Google OAuth client ID and authentication backend; this demo will not pretend to authenticate you.';});
+$('gameCount').textContent=`${games.length} games · searchable`;
+updateLoginLabel();renderTop();renderCheckerOptions();renderGames();setupScrollMotion();
+</script>
+</body>
+</html>
